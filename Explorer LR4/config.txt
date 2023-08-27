@@ -90,7 +90,8 @@ set motor_pwm_protocol = DSHOT300
 set motor_poles = 12
 set failsafe_procedure = GPS-RESCUE
 set vbat_max_cell_voltage = 440
-set vbat_warning_cell_voltage = 300
+set vbat_min_cell_voltage = 320
+set vbat_warning_cell_voltage = 340
 set yaw_motors_reversed = ON
 set small_angle = 180
 set gps_sbas_mode = AUTO
@@ -144,7 +145,7 @@ set osd_pid_yaw_pos = 199
 set osd_debug_pos = 0
 set osd_power_pos = 320
 set osd_pidrate_profile_pos = 344
-set osd_warnings_pos = 3203
+set osd_warnings_pos = 2516
 set osd_avg_cell_voltage_pos = 2596
 set osd_pit_ang_pos = 256
 set osd_rol_ang_pos = 288
@@ -207,9 +208,9 @@ set yaw_rc_rate = 5
 set roll_expo = 10
 set pitch_expo = 10
 set yaw_expo = 10
-set roll_srate = 52
-set pitch_srate = 52
-set yaw_srate = 52
+set roll_srate = 58
+set pitch_srate = 58
+set yaw_srate = 58
 
 rateprofile 1
 
