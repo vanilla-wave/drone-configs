@@ -38,7 +38,6 @@ dma ADC 1 0
 # ADC 1: DMA2 Stream 0 Channel 0
 
 # feature
-feature -TELEMETRY
 feature MOTOR_STOP
 feature GPS
 
@@ -142,8 +141,8 @@ set osd_gps_speed_pos = 2131
 set osd_gps_lon_pos = 3144
 set osd_gps_lat_pos = 3112
 set osd_gps_sats_pos = 2085
-set osd_home_dir_pos = 2091
-set osd_home_dist_pos = 2092
+set osd_home_dir_pos = 2092
+set osd_home_dist_pos = 2093
 set osd_compass_bar_pos = 265
 set osd_altitude_pos = 18483
 set osd_pid_roll_pos = 135
@@ -162,7 +161,7 @@ set osd_nheading_pos = 310
 set osd_esc_tmp_pos = 82
 set osd_esc_rpm_pos = 83
 set osd_log_status_pos = 1041
-set osd_efficiency_pos = 3242
+set osd_efficiency_pos = 3274
 set osd_stat_bitmask = 42339886
 set osd_gps_sats_show_hdop = ON
 set osd_displayport_device = MSP
@@ -219,6 +218,8 @@ set p_roll = 35
 set i_roll = 76
 set p_yaw = 35
 set i_yaw = 76
+set dyn_idle_min_rpm = 45
+set dyn_idle_p_gain = 40
 set simplified_i_gain = 120
 set simplified_pi_gain = 80
 
