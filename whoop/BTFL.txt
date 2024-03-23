@@ -1,0 +1,282 @@
+defaults nosave
+
+###WARNING: NO CUSTOM DEFAULTS FOUND###
+
+# version
+# Betaflight / STM32F405 (S405) 4.4.2 May 31 2023 / 22:53:28 (23d066d) MSP API: 1.45
+###ERROR IN diff: NO CONFIG FOUND###
+# start the command batch
+batch start
+
+# reset configuration to default settings
+defaults nosave
+
+board_name FLYWOOF405S_AIO
+manufacturer_id FLWO
+mcu_id 001e003c4d53501120303932
+signature 
+
+# name: FIREFLY
+
+# resources
+resource BEEPER 1 C13
+resource MOTOR 1 A03
+resource MOTOR 2 B00
+resource MOTOR 3 A02
+resource MOTOR 4 B01
+resource MOTOR 5 B05
+resource MOTOR 6 B07
+resource MOTOR 7 C09
+resource MOTOR 8 C08
+resource PPM 1 B08
+resource LED_STRIP 1 A09
+resource SERIAL_TX 1 B06
+resource SERIAL_TX 2 D05
+resource SERIAL_TX 3 B10
+resource SERIAL_TX 4 A00
+resource SERIAL_TX 6 C06
+resource SERIAL_RX 1 A10
+resource SERIAL_RX 2 D06
+resource SERIAL_RX 3 B11
+resource SERIAL_RX 4 A01
+resource SERIAL_RX 5 D02
+resource I2C_SCL 1 B08
+resource I2C_SDA 1 B09
+resource LED 1 C14
+resource SPI_SCK 1 A05
+resource SPI_SCK 3 C10
+resource SPI_MISO 1 A06
+resource SPI_MISO 3 C11
+resource SPI_MOSI 1 A07
+resource SPI_MOSI 3 C12
+resource ESCSERIAL 1 B08
+resource ADC_BATT 1 C03
+resource ADC_RSSI 1 C00
+resource ADC_CURR 1 C02
+resource PINIO 1 C07
+resource FLASH_CS 1 B03
+resource OSD_CS 1 B14
+resource GYRO_EXTI 1 B13
+resource GYRO_CS 1 B12
+resource USB_DETECT 1 A08
+
+# timer
+timer B00 AF2
+# pin B00: TIM3 CH3 (AF2)
+timer B01 AF2
+# pin B01: TIM3 CH4 (AF2)
+timer A03 AF1
+# pin A03: TIM2 CH4 (AF1)
+timer A02 AF1
+# pin A02: TIM2 CH3 (AF1)
+timer B05 AF2
+# pin B05: TIM3 CH2 (AF2)
+timer B07 AF2
+# pin B07: TIM4 CH2 (AF2)
+timer C09 AF3
+# pin C09: TIM8 CH4 (AF3)
+timer C08 AF3
+# pin C08: TIM8 CH3 (AF3)
+timer A09 AF1
+# pin A09: TIM1 CH2 (AF1)
+
+# dma
+dma ADC 1 0
+# ADC 1: DMA2 Stream 0 Channel 0
+dma pin B00 0
+# pin B00: DMA1 Stream 7 Channel 5
+dma pin B01 0
+# pin B01: DMA1 Stream 2 Channel 5
+dma pin A03 1
+# pin A03: DMA1 Stream 6 Channel 3
+dma pin A02 0
+# pin A02: DMA1 Stream 1 Channel 3
+dma pin B05 0
+# pin B05: DMA1 Stream 5 Channel 5
+dma pin B07 0
+# pin B07: DMA1 Stream 3 Channel 2
+dma pin C09 0
+# pin C09: DMA2 Stream 7 Channel 7
+dma pin C08 0
+# pin C08: DMA2 Stream 2 Channel 0
+dma pin A09 0
+# pin A09: DMA2 Stream 6 Channel 0
+
+# feature
+feature TELEMETRY
+feature LED_STRIP
+feature OSD
+
+# serial
+serial 2 64 115200 57600 0 115200
+serial 5 8192 115200 57600 0 115200
+
+# map
+map TAER1234
+
+# led
+led 0 7,6::CO:11
+led 1 8,6::CO:11
+
+# aux
+aux 0 0 0 1700 2100 0 0
+aux 1 1 1 1300 2100 0 0
+aux 2 35 2 1700 2100 0 0
+
+# vtxtable
+vtxtable bands 5
+vtxtable channels 8
+vtxtable band 1 BOSCAM_A A CUSTOM  5865 5845 5825 5805 5785 5765 5745 5725
+vtxtable band 2 BOSCAM_B B CUSTOM  5733 5752 5771 5790 5809 5828 5847 5866
+vtxtable band 3 BOSCAM_E E CUSTOM  5705 5685 5665 5645 5885 5905 5925 5945
+vtxtable band 4 FATSHARK F CUSTOM  5740 5760 5780 5800 5820 5840 5860 5880
+vtxtable band 5 RACEBAND R CUSTOM  5658 5695 5732 5769 5806 5843 5880 5917
+vtxtable powerlevels 6
+vtxtable powervalues 25 50 100 200 400 1
+vtxtable powerlabels 25 50 100 200 400 0MW
+
+# master
+set dyn_notch_min_hz = 150
+set dyn_notch_max_hz = 300
+set acc_calibration = -23,-26,-3,1
+set mag_bustype = I2C
+set mag_i2c_device = 1
+set mag_hardware = NONE
+set baro_bustype = I2C
+set baro_i2c_device = 1
+set serialrx_provider = CRSF
+set blackbox_sample_rate = 1/2
+set blackbox_device = SPIFLASH
+set min_throttle = 1090
+set dshot_idle_value = 1200
+set dshot_bidir = ON
+set motor_pwm_protocol = DSHOT300
+set motor_poles = 12
+set vbat_max_cell_voltage = 440
+set vbat_warning_cell_voltage = 333
+set current_meter = ADC
+set battery_meter = ADC
+set ibata_scale = 550
+set beeper_inversion = ON
+set beeper_od = OFF
+set yaw_motors_reversed = ON
+set small_angle = 180
+set pid_process_denom = 4
+set osd_warn_bitmask = 8063
+set osd_vbat_pos = 2434
+set osd_link_quality_pos = 2114
+set osd_tim_1_pos = 2423
+set osd_tim_2_pos = 2391
+set osd_remaining_time_estimate_pos = 407
+set osd_flymode_pos = 2296
+set osd_throttle_pos = 2327
+set osd_vtx_channel_pos = 2091
+set osd_current_pos = 2157
+set osd_mah_drawn_pos = 2147
+set osd_craft_name_pos = 2082
+set osd_altitude_pos = 2102
+set osd_warnings_pos = 14733
+set osd_avg_cell_voltage_pos = 2402
+set osd_core_temp_pos = 2263
+set osd_sys_delay_pos = 162
+set osd_sys_distance_pos = 194
+set osd_sys_vtx_temp_pos = 183
+set osd_canvas_width = 30
+set osd_canvas_height = 13
+set debug_mode = GYRO_SCALED
+set vtx_band = 5
+set vtx_channel = 8
+set vtx_power = 5
+set vtx_freq = 5917
+set max7456_spi_bus = 3
+set dashboard_i2c_bus = 1
+set pinio_config = 1,129,129,129
+set pinio_box = 40,255,255,255
+set flash_spi_bus = 3
+set gyro_1_bustype = SPI
+set gyro_1_spibus = 1
+set gyro_1_sensor_align = DEFAULT
+set gyro_1_align_yaw = 900
+set gyro_2_spibus = 1
+set craft_name = FIREFLY
+set pilot_name = Vanilla Wave
+
+profile 0
+
+profile 1
+
+profile 2
+
+# profile 2
+set vbat_sag_compensation = 100
+set iterm_relax_cutoff = 25
+set p_pitch = 74
+set i_pitch = 133
+set d_pitch = 45
+set f_pitch = 151
+set p_roll = 71
+set i_roll = 127
+set d_roll = 44
+set f_roll = 145
+set p_yaw = 71
+set i_yaw = 127
+set f_yaw = 145
+set d_min_roll = 41
+set d_min_pitch = 42
+set d_max_advance = 0
+set thrust_linear = 30
+set feedforward_jitter_factor = 5
+set simplified_master_multiplier = 110
+set simplified_d_gain = 125
+set simplified_pi_gain = 145
+set simplified_dmax_gain = 25
+set simplified_feedforward_gain = 110
+set simplified_pitch_d_gain = 90
+
+profile 3
+
+# restore original profile selection
+profile 0
+
+rateprofile 0
+
+# rateprofile 0
+set rateprofile_name = #1 prof
+set thr_mid = 30
+set thr_expo = 25
+set rates_type = BETAFLIGHT
+set roll_rc_rate = 80
+set pitch_rc_rate = 80
+set yaw_rc_rate = 80
+set roll_expo = 10
+set pitch_expo = 10
+set yaw_expo = 10
+set roll_srate = 70
+set pitch_srate = 70
+set yaw_srate = 70
+
+rateprofile 1
+
+# rateprofile 1
+set rateprofile_name = #2 prof
+set thr_mid = 30
+set thr_expo = 35
+set rates_type = BETAFLIGHT
+set roll_rc_rate = 100
+set pitch_rc_rate = 100
+set yaw_rc_rate = 100
+set roll_expo = 22
+set pitch_expo = 22
+set yaw_expo = 22
+set roll_srate = 75
+set pitch_srate = 75
+set yaw_srate = 75
+
+rateprofile 2
+
+rateprofile 3
+
+# restore original rateprofile selection
+rateprofile 1
+
+# save configuration
