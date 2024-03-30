@@ -97,7 +97,6 @@ set blackbox_sample_rate = 1/2
 set dshot_idle_value = 300
 set dshot_bidir = ON
 set motor_pwm_protocol = DSHOT300
-set failsafe_procedure = GPS-RESCUE
 set vbat_max_cell_voltage = 440
 set yaw_motors_reversed = ON
 set small_angle = 180
@@ -216,25 +215,24 @@ profile 1
 # profile 1
 set vbat_sag_compensation = 100
 set p_pitch = 58
-set i_pitch = 0
+set i_pitch = 105
 set d_pitch = 57
 set f_pitch = 156
 set p_roll = 56
-set i_roll = 0
+set i_roll = 100
 set d_roll = 50
 set f_roll = 150
 set p_yaw = 56
-set i_yaw = 0
+set i_yaw = 100
 set f_yaw = 150
 set d_min_roll = 37
 set d_min_pitch = 42
 set feedforward_smooth_factor = 0
 set feedforward_jitter_factor = 15
 set feedforward_boost = 5
-set dyn_idle_min_rpm = 45
+set dyn_idle_min_rpm = 48
 set dyn_idle_p_gain = 40
 set simplified_master_multiplier = 125
-set simplified_i_gain = 0
 
 profile 2
 
