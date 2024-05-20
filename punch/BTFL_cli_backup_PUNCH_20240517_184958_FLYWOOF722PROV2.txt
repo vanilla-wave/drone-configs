@@ -2,8 +2,8 @@ defaults nosave
 
 
 # version
-# Betaflight / STM32F7X2 (S7X2) 4.5.0 Apr 28 2024 / 13:54:03 (c155f5830) MSP API: 1.46
-# config rev: 3068e6e
+# Betaflight / STM32F7X2 (S7X2) 4.5.0 Apr 30 2024 / 16:10:46 (c155f5830) MSP API: 1.46
+# config rev: 2ceeadc
 
 # start the command batch
 batch start
@@ -11,7 +11,7 @@ batch start
 # reset configuration to default settings
 defaults nosave
 
-board_name FLYWOOF7DUAL
+board_name FLYWOOF722PROV2
 manufacturer_id FLWO
 mcu_id 004900283133510636313534
 signature 
@@ -24,10 +24,12 @@ feature TELEMETRY
 feature LED_STRIP
 feature OSD
 feature CHANNEL_FORWARDING
+feature ESC_SENSOR
 
 # serial
 serial 2 131073 115200 57600 0 115200
 serial 4 64 115200 57600 0 115200
+serial 5 1024 115200 57600 0 115200
 
 # beacon
 beacon RX_LOST
@@ -45,13 +47,16 @@ aux 3 36 4 1700 2100 0 0
 # master
 set gyro_lpf1_static_hz = 0
 set gyro_lpf2_static_hz = 1000
-set dyn_notch_count = 0
+set dyn_notch_count = 1
 set dyn_notch_q = 500
+set dyn_notch_min_hz = 200
+set dyn_notch_max_hz = 500
 set gyro_lpf1_dyn_min_hz = 0
-set acc_calibration = 10,8,-4084,1
+set acc_calibration = -13,-4,-4082,1
 set mag_hardware = NONE
 set dshot_bidir = ON
-set ibata_scale = 80
+set motor_output_reordering = 3,2,1,0,4,5,6,7
+set ibata_scale = 2945
 set yaw_motors_reversed = ON
 set small_angle = 180
 set pid_process_denom = 2
@@ -65,7 +70,7 @@ set osd_tim1 = 25344
 set osd_tim2 = 25345
 set osd_vbat_pos = 2566
 set osd_rssi_pos = 474
-set osd_link_quality_pos = 6172
+set osd_link_quality_pos = 6167
 set osd_link_tx_power_pos = 2052
 set osd_rssi_dbm_pos = 2060
 set osd_rsnr_pos = 2069
@@ -76,14 +81,14 @@ set osd_throttle_pos = 7659
 set osd_vtx_channel_pos = 16
 set osd_crosshairs_pos = 236
 set osd_ah_pos = 199
-set osd_current_pos = 6235
+set osd_current_pos = 6230
 set osd_mah_drawn_pos = 2107
 set osd_craft_name_pos = 6775
-set osd_gps_speed_pos = 6225
+set osd_gps_speed_pos = 2129
 set osd_gps_lon_pos = 3144
 set osd_gps_lat_pos = 3112
 set osd_gps_sats_pos = 2085
-set osd_home_dir_pos = 6223
+set osd_home_dir_pos = 2127
 set osd_home_dist_pos = 2092
 set osd_compass_bar_pos = 265
 set osd_altitude_pos = 18483
@@ -106,14 +111,40 @@ set osd_log_status_pos = 1041
 set osd_efficiency_pos = 3274
 set osd_stat_bitmask = 42339886
 set osd_profile = 2
+set gyro_1_sensor_align = CW90
+set gyro_1_align_yaw = 900
+set rpm_filter_weights = 100,0,80
 set craft_name = punch
 set pilot_name = Vanilla Wave
 
 profile 0
 
 # profile 0
+set dterm_lpf1_dyn_min_hz = 82
+set dterm_lpf1_dyn_max_hz = 165
+set dterm_lpf1_static_hz = 82
+set dterm_lpf2_static_hz = 165
+set vbat_sag_compensation = 100
+set pidsum_limit = 1000
+set pidsum_limit_yaw = 1000
+set p_pitch = 65
+set i_pitch = 117
+set d_pitch = 64
+set f_pitch = 175
+set p_roll = 63
+set i_roll = 112
+set d_roll = 56
+set f_roll = 168
+set p_yaw = 63
+set i_yaw = 112
+set f_yaw = 168
+set d_min_roll = 42
+set d_min_pitch = 47
 set feedforward_smooth_factor = 30
 set feedforward_jitter_factor = 9
+set dyn_idle_min_rpm = 30
+set simplified_master_multiplier = 140
+set simplified_dterm_filter_multiplier = 110
 
 profile 1
 
@@ -175,6 +206,8 @@ rateprofile 3
 
 # rateprofile 3
 set rateprofile_name = juice1k
+set thr_mid = 32
+set thr_expo = 28
 set rates_type = BETAFLIGHT
 set roll_rc_rate = 144
 set pitch_rc_rate = 144
