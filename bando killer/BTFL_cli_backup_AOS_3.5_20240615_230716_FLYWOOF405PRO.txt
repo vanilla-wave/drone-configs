@@ -1,11 +1,9 @@
 defaults nosave
 
-# diff all
 
 # version
-# Betaflight / STM32F405 (S405) 4.4.2 Jun  1 2023 / 15:45:25 (23d066d08) MSP API: 1.45
-
-# config: YES
+# Betaflight / STM32F405 (S405) 4.5.0 Apr 28 2024 / 02:57:44 (c155f5830) MSP API: 1.46
+# config rev: 3068e6e
 
 # start the command batch
 batch start
@@ -13,7 +11,7 @@ batch start
 # reset configuration to default settings
 defaults nosave
 
-board_name FLYWOOF405
+board_name FLYWOOF405PRO
 manufacturer_id FLWO
 mcu_id 002300463331511930333731
 signature 
@@ -21,26 +19,14 @@ signature
 # name: aos 3.5
 
 # resources
-resource MOTOR 6 C09
 resource MOTOR 7 B07
-resource MOTOR 8 C08
-resource LED_STRIP 1 A09
-resource SERIAL_TX 2 D05
-resource SERIAL_RX 2 D06
-resource INVERTER 3 NONE
-resource ADC_RSSI 1 C00
-resource PINIO 1 NONE
-resource PINIO 2 NONE
-resource GYRO_EXTI 1 B13
-resource GYRO_CS 1 B12
-
-# dma
-dma ADC 1 0
-# ADC 1: DMA2 Stream 0 Channel 0
 
 # feature
 feature MOTOR_STOP
 feature GPS
+feature TELEMETRY
+feature LED_STRIP
+feature OSD
 
 # serial
 serial 2 131073 115200 57600 0 115200
@@ -54,7 +40,6 @@ mmix 2  1.000  0.809  0.659  1.000
 mmix 3  1.000  1.000 -0.659 -1.000
 
 # beacon
-beacon RX_LOST
 beacon RX_SET
 
 # map
@@ -81,23 +66,16 @@ rxfail 7 s 2000
 
 # master
 set gyro_lpf1_static_hz = 0
-set gyro_lpf2_static_hz = 1000
-set dyn_notch_count = 0
+set gyro_lpf2_static_hz = 450
 set dyn_notch_q = 500
 set dyn_notch_min_hz = 150
 set gyro_lpf1_dyn_min_hz = 0
-set gyro_lpf1_dyn_max_hz = 0
+set gyro_lpf1_dyn_max_hz = 450
 set acc_lpf_hz = 10
 set acc_calibration = -80,19,-14,1
-set align_mag = CW270FLIP
-set mag_align_pitch = 1800
-set mag_align_yaw = 2700
-set mag_hardware = NONE
-set mag_calibration = 170,195,9
 set rc_smoothing_auto_factor = 20
 set rc_smoothing_setpoint_cutoff = 25
 set rc_smoothing_feedforward_cutoff = 25
-set serialrx_provider = CRSF
 set blackbox_sample_rate = 1/2
 set dshot_idle_value = 300
 set dshot_bidir = ON
@@ -120,7 +98,7 @@ set gps_rescue_throttle_d = 15
 set gps_rescue_velocity_i = 30
 set gps_rescue_velocity_d = 20
 set pid_process_denom = 2
-set simplified_gyro_filter_multiplier = 200
+set simplified_gyro_filter_multiplier = 90
 set osd_warn_bitmask = 171901
 set osd_rssi_alarm = 40
 set osd_rssi_dbm_alarm = -100
@@ -171,105 +149,75 @@ set osd_log_status_pos = 1041
 set osd_efficiency_pos = 3274
 set osd_stat_bitmask = 42339886
 set osd_profile = 2
-set osd_gps_sats_show_hdop = ON
-set osd_displayport_device = MSP
 set debug_mode = GYRO_SCALED
-set vcd_video_system = HD
-set gyro_1_sensor_align = CW180FLIP
-set gyro_1_align_pitch = 1800
-set gyro_1_align_yaw = 1800
+set rpm_filter_weights = 100,0,80
 set craft_name = aos 3.5
 
 profile 0
 
 # profile 0
-set dterm_lpf1_dyn_min_hz = 80
-set dterm_lpf1_dyn_max_hz = 110
-set dterm_lpf1_type = BIQUAD
-set dterm_lpf2_static_hz = 0
+set dterm_lpf1_dyn_min_hz = 67
+set dterm_lpf1_dyn_max_hz = 135
+set dterm_lpf1_static_hz = 67
+set dterm_lpf2_static_hz = 135
 set vbat_sag_compensation = 100
-set p_pitch = 23
-set i_pitch = 47
-set d_pitch = 47
-set f_pitch = 110
-set p_roll = 26
-set i_roll = 52
-set d_roll = 41
-set f_roll = 124
-set p_yaw = 26
-set i_yaw = 52
-set f_yaw = 124
-set d_min_roll = 31
-set d_min_pitch = 35
-set d_max_advance = 0
-set feedforward_smooth_factor = 0
-set feedforward_jitter_factor = 10
-set feedforward_boost = 5
-set feedforward_max_rate_limit = 95
-set dyn_idle_min_rpm = 45
-set dyn_idle_p_gain = 40
-set simplified_master_multiplier = 80
-set simplified_i_gain = 110
-set simplified_d_gain = 130
-set simplified_pi_gain = 75
-set simplified_feedforward_gain = 130
-set simplified_pitch_pi_gain = 85
-set simplified_dterm_filter = OFF
-
-profile 1
-
-# profile 1
-set dterm_lpf1_dyn_min_hz = 90
-set dterm_lpf1_dyn_max_hz = 180
-set dterm_lpf1_static_hz = 90
-set dterm_lpf2_static_hz = 180
 set anti_gravity_gain = 0
 set iterm_relax_cutoff = 40
 set pidsum_limit = 1000
 set pidsum_limit_yaw = 1000
-set p_pitch = 50
-set i_pitch = 108
-set d_pitch = 62
-set f_pitch = 118
-set p_roll = 48
-set i_roll = 103
-set d_roll = 54
-set f_roll = 113
-set p_yaw = 48
-set i_yaw = 103
-set f_yaw = 113
-set d_min_roll = 40
-set d_min_pitch = 45
+set p_pitch = 35
+set i_pitch = 77
+set d_pitch = 39
+set f_pitch = 74
+set p_roll = 34
+set i_roll = 73
+set d_roll = 34
+set f_roll = 71
+set p_yaw = 34
+set i_yaw = 73
+set f_yaw = 71
+set d_min_roll = 25
+set d_min_pitch = 28
 set auto_profile_cell_count = 6
 set feedforward_smooth_factor = 0
 set feedforward_jitter_factor = 15
 set feedforward_boost = 5
 set dyn_idle_min_rpm = 50
 set dyn_idle_p_gain = 40
-set simplified_master_multiplier = 135
+set simplified_master_multiplier = 85
 set simplified_i_gain = 120
-set simplified_pi_gain = 80
+set simplified_pi_gain = 90
 set simplified_feedforward_gain = 70
-set simplified_dterm_filter_multiplier = 120
+set simplified_dterm_filter_multiplier = 90
+set tpa_breakpoint = 1280
+
+profile 1
+
+# profile 1
+set dterm_lpf1_dyn_min_hz = 67
+set dterm_lpf1_dyn_max_hz = 135
+set dterm_lpf1_static_hz = 67
+set dterm_lpf2_static_hz = 135
+set pidsum_limit = 1000
+set pidsum_limit_yaw = 1000
+set dyn_idle_min_rpm = 50
+set simplified_dterm_filter_multiplier = 90
 
 profile 2
 
 profile 3
 
 # restore original profile selection
-profile 1
+profile 0
 
 rateprofile 0
 
 # rateprofile 0
-set rateprofile_name = 533e
+set rateprofile_name = 533
 set rates_type = BETAFLIGHT
 set roll_rc_rate = 80
 set pitch_rc_rate = 80
 set yaw_rc_rate = 80
-set roll_expo = 10
-set pitch_expo = 10
-set yaw_expo = 10
 set roll_srate = 70
 set pitch_srate = 70
 set yaw_srate = 70
@@ -277,6 +225,7 @@ set yaw_srate = 70
 rateprofile 1
 
 # rateprofile 1
+set rateprofile_name = FR800
 set rates_type = BETAFLIGHT
 set roll_rc_rate = 100
 set pitch_rc_rate = 100
@@ -291,30 +240,33 @@ set yaw_srate = 75
 rateprofile 2
 
 # rateprofile 2
-set rateprofile_name = sb low
+set rateprofile_name = newEra
 set rates_type = BETAFLIGHT
-set roll_rc_rate = 125
-set pitch_rc_rate = 125
-set yaw_rc_rate = 125
-set roll_expo = 15
-set pitch_expo = 15
-set yaw_expo = 15
-set roll_srate = 69
-set pitch_srate = 69
-set yaw_srate = 69
+set roll_rc_rate = 130
+set pitch_rc_rate = 130
+set yaw_rc_rate = 130
+set roll_srate = 65
+set pitch_srate = 65
+set yaw_srate = 55
 
 rateprofile 3
 
 # rateprofile 3
+set rateprofile_name = juice1k
+set thr_mid = 32
+set thr_expo = 28
 set rates_type = BETAFLIGHT
-set roll_rc_rate = 100
-set pitch_rc_rate = 100
-set yaw_rc_rate = 100
-set roll_srate = 70
-set pitch_srate = 70
-set yaw_srate = 70
+set roll_rc_rate = 144
+set pitch_rc_rate = 144
+set yaw_rc_rate = 140
+set roll_expo = 10
+set pitch_expo = 10
+set yaw_expo = 10
+set roll_srate = 72
+set pitch_srate = 72
+set yaw_srate = 62
 
 # restore original rateprofile selection
-rateprofile 1
+rateprofile 2
 
 # save configuration
