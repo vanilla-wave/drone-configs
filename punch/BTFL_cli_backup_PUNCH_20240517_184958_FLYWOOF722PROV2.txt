@@ -43,20 +43,22 @@ aux 0 0 0 1700 2100 0 0
 aux 1 1 1 1300 2100 0 0
 aux 2 13 3 1700 2100 0 0
 aux 3 36 4 1700 2100 0 0
+aux 4 35 2 1700 2100 0 0
 
 # master
 set gyro_lpf1_static_hz = 0
 set gyro_lpf2_static_hz = 1000
-set dyn_notch_count = 1
 set dyn_notch_q = 500
-set dyn_notch_min_hz = 200
-set dyn_notch_max_hz = 500
+set dyn_notch_min_hz = 185
+set dyn_notch_max_hz = 650
 set gyro_lpf1_dyn_min_hz = 0
-set acc_calibration = -13,-4,-4082,1
+set gyro_lpf1_dyn_max_hz = 425
+set acc_calibration = 17,8,-15,1
 set mag_hardware = NONE
+set blackbox_sample_rate = 1/2
 set dshot_bidir = ON
 set motor_output_reordering = 3,2,1,0,4,5,6,7
-set ibata_scale = 2945
+set ibata_scale = 2900
 set yaw_motors_reversed = ON
 set small_angle = 180
 set pid_process_denom = 2
@@ -111,6 +113,7 @@ set osd_log_status_pos = 1041
 set osd_efficiency_pos = 3274
 set osd_stat_bitmask = 42339886
 set osd_profile = 2
+set debug_mode = GYRO_SCALED
 set gyro_1_sensor_align = CW90
 set gyro_1_align_yaw = 900
 set rpm_filter_weights = 100,0,80
@@ -120,40 +123,53 @@ set pilot_name = Vanilla Wave
 profile 0
 
 # profile 0
-set dterm_lpf1_dyn_min_hz = 82
-set dterm_lpf1_dyn_max_hz = 165
-set dterm_lpf1_static_hz = 82
-set dterm_lpf2_static_hz = 165
 set vbat_sag_compensation = 100
 set pidsum_limit = 1000
 set pidsum_limit_yaw = 1000
-set p_pitch = 65
-set i_pitch = 117
-set d_pitch = 64
-set f_pitch = 175
-set p_roll = 63
-set i_roll = 112
-set d_roll = 56
-set f_roll = 168
-set p_yaw = 63
-set i_yaw = 112
-set f_yaw = 168
-set d_min_roll = 42
-set d_min_pitch = 47
+set p_pitch = 35
+set i_pitch = 63
+set p_roll = 33
+set i_roll = 60
+set p_yaw = 33
+set i_yaw = 60
 set feedforward_smooth_factor = 30
 set feedforward_jitter_factor = 9
 set dyn_idle_min_rpm = 30
-set simplified_master_multiplier = 140
-set simplified_dterm_filter_multiplier = 110
+set simplified_pi_gain = 75
 
 profile 1
+
+# profile 1
+set dterm_lpf1_dyn_min_hz = 97
+set dterm_lpf1_dyn_max_hz = 195
+set dterm_lpf1_static_hz = 97
+set dterm_lpf2_static_hz = 195
+set vbat_sag_compensation = 100
+set anti_gravity_gain = 0
+set p_pitch = 80
+set i_pitch = 143
+set d_pitch = 50
+set f_pitch = 137
+set p_roll = 76
+set i_roll = 136
+set d_roll = 44
+set f_roll = 132
+set p_yaw = 76
+set i_yaw = 136
+set f_yaw = 132
+set d_min_roll = 33
+set d_min_pitch = 37
+set dyn_idle_min_rpm = 30
+set simplified_master_multiplier = 110
+set simplified_pi_gain = 155
+set simplified_dterm_filter_multiplier = 130
 
 profile 2
 
 profile 3
 
 # restore original profile selection
-profile 0
+profile 1
 
 rateprofile 0
 
@@ -163,9 +179,6 @@ set rates_type = BETAFLIGHT
 set roll_rc_rate = 80
 set pitch_rc_rate = 80
 set yaw_rc_rate = 80
-set roll_expo = 10
-set pitch_expo = 10
-set yaw_expo = 10
 set roll_srate = 70
 set pitch_srate = 70
 set yaw_srate = 70
@@ -190,17 +203,14 @@ set yaw_srate = 70
 rateprofile 2
 
 # rateprofile 2
-set rateprofile_name = 800juice
+set rateprofile_name = newEra
 set rates_type = BETAFLIGHT
-set roll_rc_rate = 120
-set pitch_rc_rate = 120
-set yaw_rc_rate = 120
-set roll_expo = 12
-set pitch_expo = 12
-set yaw_expo = 12
-set roll_srate = 70
-set pitch_srate = 70
-set yaw_srate = 62
+set roll_rc_rate = 130
+set pitch_rc_rate = 130
+set yaw_rc_rate = 130
+set roll_srate = 65
+set pitch_srate = 65
+set yaw_srate = 55
 
 rateprofile 3
 
@@ -212,14 +222,11 @@ set rates_type = BETAFLIGHT
 set roll_rc_rate = 144
 set pitch_rc_rate = 144
 set yaw_rc_rate = 140
-set roll_expo = 10
-set pitch_expo = 10
-set yaw_expo = 10
 set roll_srate = 72
 set pitch_srate = 72
 set yaw_srate = 62
 
 # restore original rateprofile selection
-rateprofile 3
+rateprofile 2
 
 # save configuration
