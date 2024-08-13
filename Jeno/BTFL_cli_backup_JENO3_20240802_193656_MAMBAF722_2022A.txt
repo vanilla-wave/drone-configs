@@ -1,0 +1,210 @@
+defaults nosave
+
+
+# version
+# Betaflight / STM32F7X2 (S7X2) 4.5.1 Jul 28 2024 / 14:37:56 (77d01ba3b) MSP API: 1.46
+# config rev: 6440ad8
+
+# start the command batch
+batch start
+
+# reset configuration to default settings
+defaults nosave
+
+board_name MAMBAF722_2022A
+manufacturer_id DIAT
+mcu_id 001a00413033510b32323536
+signature 
+
+# name: Jeno3
+
+# feature
+feature TELEMETRY
+feature LED_STRIP
+feature OSD
+
+# serial
+serial 0 64 115200 57600 0 115200
+serial 3 131073 115200 57600 0 115200
+
+# beacon
+beacon RX_SET
+
+# map
+map TAER1234
+
+# aux
+aux 0 0 0 1700 2100 0 0
+aux 1 1 1 1300 2100 0 0
+aux 2 13 3 1700 2100 0 0
+aux 3 35 2 1700 2100 0 0
+aux 4 36 4 1700 2100 0 0
+
+# master
+set gyro_lpf1_static_hz = 0
+set gyro_lpf2_static_hz = 1000
+set dyn_notch_count = 1
+set dyn_notch_q = 500
+set dyn_notch_min_hz = 215
+set dyn_notch_max_hz = 275
+set gyro_lpf1_dyn_min_hz = 0
+set gyro_lpf1_dyn_max_hz = 1000
+set acc_calibration = -38,-68,-193,1
+set dshot_bidir = ON
+set motor_poles = 12
+set vbat_max_cell_voltage = 440
+set yaw_motors_reversed = ON
+set small_angle = 180
+set simplified_gyro_filter_multiplier = 200
+set osd_warn_bitmask = 171901
+set osd_rssi_alarm = 40
+set osd_rssi_dbm_alarm = -100
+set osd_rsnr_alarm = 3
+set osd_cap_alarm = 5000
+set osd_tim1 = 25344
+set osd_tim2 = 25345
+set osd_vbat_pos = 2566
+set osd_rssi_pos = 474
+set osd_link_quality_pos = 6167
+set osd_link_tx_power_pos = 2052
+set osd_rssi_dbm_pos = 2060
+set osd_rsnr_pos = 2069
+set osd_tim_1_pos = 7689
+set osd_tim_2_pos = 7721
+set osd_flymode_pos = 7178
+set osd_throttle_pos = 7659
+set osd_vtx_channel_pos = 16
+set osd_crosshairs_pos = 236
+set osd_ah_pos = 199
+set osd_current_pos = 6230
+set osd_mah_drawn_pos = 2107
+set osd_craft_name_pos = 6775
+set osd_gps_speed_pos = 2129
+set osd_gps_lon_pos = 3144
+set osd_gps_lat_pos = 3112
+set osd_gps_sats_pos = 2085
+set osd_home_dir_pos = 2127
+set osd_home_dist_pos = 2092
+set osd_compass_bar_pos = 265
+set osd_altitude_pos = 18483
+set osd_pid_roll_pos = 135
+set osd_pid_pitch_pos = 167
+set osd_pid_yaw_pos = 199
+set osd_debug_pos = 0
+set osd_power_pos = 320
+set osd_pidrate_profile_pos = 344
+set osd_warnings_pos = 6612
+set osd_avg_cell_voltage_pos = 6679
+set osd_pit_ang_pos = 256
+set osd_rol_ang_pos = 288
+set osd_battery_usage_pos = 391
+set osd_disarmed_pos = 75
+set osd_nheading_pos = 310
+set osd_esc_tmp_pos = 82
+set osd_esc_rpm_pos = 83
+set osd_log_status_pos = 1041
+set osd_efficiency_pos = 3274
+set osd_stat_bitmask = 42339886
+set osd_profile = 2
+set debug_mode = GYRO_SCALED
+set rpm_filter_weights = 100,0,80
+set craft_name = Jeno3
+set pilot_name = Vanilla Wave
+
+profile 0
+
+# profile 0
+set dterm_lpf1_dyn_min_hz = 90
+set dterm_lpf1_dyn_max_hz = 180
+set dterm_lpf1_static_hz = 90
+set dterm_lpf2_static_hz = 180
+set vbat_sag_compensation = 100
+set p_pitch = 51
+set i_pitch = 91
+set d_pitch = 58
+set f_pitch = 181
+set p_roll = 48
+set i_roll = 87
+set d_roll = 50
+set f_roll = 173
+set p_yaw = 48
+set i_yaw = 87
+set f_yaw = 173
+set d_min_roll = 43
+set d_min_pitch = 49
+set feedforward_smooth_factor = 30
+set feedforward_jitter_factor = 9
+set dyn_idle_min_rpm = 60
+set simplified_master_multiplier = 145
+set simplified_pi_gain = 75
+set simplified_dmax_gain = 50
+set simplified_dterm_filter_multiplier = 120
+
+profile 1
+
+profile 2
+
+profile 3
+
+# restore original profile selection
+profile 0
+
+rateprofile 0
+
+# rateprofile 0
+set rateprofile_name = 533
+set thr_mid = 32
+set thr_expo = 35
+set rates_type = BETAFLIGHT
+set roll_rc_rate = 80
+set pitch_rc_rate = 80
+set yaw_rc_rate = 80
+set roll_srate = 70
+set pitch_srate = 70
+set yaw_srate = 70
+
+rateprofile 1
+
+# rateprofile 1
+set rateprofile_name = newEra_1
+set thr_mid = 32
+set rates_type = BETAFLIGHT
+set roll_rc_rate = 140
+set pitch_rc_rate = 140
+set yaw_rc_rate = 140
+set roll_srate = 62
+set pitch_srate = 62
+set yaw_srate = 52
+
+rateprofile 2
+
+# rateprofile 2
+set rateprofile_name = newEra
+set thr_mid = 32
+set thr_expo = 35
+set rates_type = BETAFLIGHT
+set roll_rc_rate = 130
+set pitch_rc_rate = 130
+set yaw_rc_rate = 130
+set roll_srate = 65
+set pitch_srate = 65
+set yaw_srate = 55
+
+rateprofile 3
+
+# rateprofile 3
+set rateprofile_name = juice1k
+set thr_mid = 32
+set thr_expo = 35
+set rates_type = BETAFLIGHT
+set roll_rc_rate = 144
+set pitch_rc_rate = 144
+set yaw_rc_rate = 140
+set roll_srate = 72
+set pitch_srate = 72
+set yaw_srate = 62
+
+# restore original rateprofile selection
+rateprofile 1
+
+# save configuration
