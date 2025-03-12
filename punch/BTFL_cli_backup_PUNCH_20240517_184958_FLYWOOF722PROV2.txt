@@ -2,8 +2,8 @@ defaults nosave
 
 
 # version
-# Betaflight / STM32F7X2 (S7X2) 4.5.0 Apr 30 2024 / 16:10:46 (c155f5830) MSP API: 1.46
-# config rev: 2ceeadc
+# Betaflight / STM32F7X2 (S7X2) 4.5.1 Jul 27 2024 / 17:07:57 (77d01ba3b) MSP API: 1.46
+# config rev: 6440ad8
 
 # start the command batch
 batch start
@@ -13,7 +13,7 @@ defaults nosave
 
 board_name FLYWOOF722PROV2
 manufacturer_id FLWO
-mcu_id 004900283133510636313534
+mcu_id 002a00213133510936313534
 signature 
 
 # name: punch
@@ -55,8 +55,9 @@ set dyn_notch_min_hz = 160
 set dyn_notch_max_hz = 650
 set gyro_lpf1_dyn_min_hz = 0
 set gyro_lpf1_dyn_max_hz = 425
-set acc_calibration = 48,50,-10,1
+set acc_calibration = 31,39,10,1
 set mag_hardware = NONE
+set rc_smoothing_auto_factor = 50
 set blackbox_sample_rate = 1/2
 set dshot_bidir = ON
 set motor_output_reordering = 3,2,1,0,4,5,6,7
@@ -142,30 +143,32 @@ set simplified_pi_gain = 75
 profile 1
 
 # profile 1
-set dterm_lpf1_dyn_min_hz = 90
-set dterm_lpf1_dyn_max_hz = 180
-set dterm_lpf1_static_hz = 90
-set dterm_lpf2_static_hz = 180
+set dterm_lpf1_dyn_min_hz = 82
+set dterm_lpf1_dyn_max_hz = 165
+set dterm_lpf1_static_hz = 82
+set dterm_lpf2_static_hz = 165
 set vbat_sag_compensation = 100
 set iterm_relax_cutoff = 20
-set p_pitch = 63
-set i_pitch = 124
+set p_pitch = 79
+set i_pitch = 155
 set d_pitch = 62
 set f_pitch = 168
-set p_roll = 60
-set i_roll = 118
+set p_roll = 75
+set i_roll = 148
 set d_roll = 54
 set f_roll = 162
-set p_yaw = 60
-set i_yaw = 118
+set p_yaw = 75
+set i_yaw = 148
 set f_yaw = 162
 set d_min_roll = 40
 set d_min_pitch = 45
+set feedforward_averaging = 2_POINT
 set dyn_idle_min_rpm = 30
 set simplified_master_multiplier = 135
 set simplified_i_gain = 110
-set simplified_dterm_filter_multiplier = 120
-set tpa_rate = 70
+set simplified_pi_gain = 125
+set simplified_dterm_filter_multiplier = 110
+set tpa_rate = 60
 set tpa_breakpoint = 1400
 
 profile 2
